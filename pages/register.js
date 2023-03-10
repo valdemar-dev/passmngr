@@ -37,20 +37,20 @@ export default function Register() {
     const email = event.target[0].value;
     const password = event.target[1].value;
     
-    if (!email) return highlightInput(emailRef, "Enter a valid email address!");
+    if (!email) return highlightInput(emailRef, "Enter an email!");
     if (!password) return highlightInput(passwordRef, "Enter a password!");
 
     if (password.length < 12) {
       return(
-        highlightInput(passwordRef, "Must be a minimum of 12 characters!")
+        highlightInput(passwordRef, "Min 12 characters!")
       )
     } else if (/[A-Z]/g.test(password) === false) {
       return(
-        highlightInput(passwordRef, "At least one capital letter requited!")
+        highlightInput(passwordRef, "Min 1 capital letter!")
       )
     } else if (/[0-9]/g.test(password) === false) {
       return(
-        highlightInput(passwordRef, "Must contain at least one number!")
+        highlightInput(passwordRef, "Min 1 number!")
       )
     }
 

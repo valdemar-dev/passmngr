@@ -1,5 +1,5 @@
 .register {
-    height: 100vh;
+    height: 100svh;
     width: 100%;
 
     display: flex;
@@ -63,8 +63,8 @@
 
     z-index: 100;
     position: relative;
-    max-width: 80%; 
-    width: 400px;
+
+    width: min(95%, 400px);
     
     animation-name: register_form_animation;
     animation-duration: 0.4s;
@@ -157,4 +157,5 @@
 
 #register_info_text {
     color: #ff3021;
+    font-size: clamp(0.8, 4vw, 1rem);
 }

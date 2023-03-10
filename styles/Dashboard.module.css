@@ -81,6 +81,10 @@
     .dashboard #logo h1 {
         font-size: 0.9rem;
     }
+
+    .dashboard #logo {
+        justify-content: flex-end;
+    }
 }
 
 /* top bar aka search bar */
@@ -474,12 +478,21 @@ input#topbar_search:focus::-webkit-search-cancel-button {
     pointer-events: none;
 }
 
-.account_copy button:hover .tooltip_text {
-    opacity: 1;
-    pointer-events: all;
-    transition-delay: 0.6s;
+@media screen and (min-width: 800px) {
+    .account_copy button:hover .tooltip_text {
+        opacity: 1;
+        pointer-events: all;
+        transition-delay: 0.6s;
+    }
 }
 
+@media screen and (max-width: 800px) {
+    .account_copy button:active .tooltip_text {
+        opacity: 1;
+        pointer-events: all;
+        transition-delay: 0.6s;
+    }
+}
 
 /* create account form */
 .dashboard #inner_content #create_account {
