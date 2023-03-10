@@ -9,7 +9,7 @@
 
     z-index: 1000;
 
-    height: calc(100vh - clamp(1rem, 10vh, 12vh));
+    height: calc(100svh - clamp(1rem, 10vh, 12vh));
     width: calc(100vw - clamp(1rem, 12vw, 20vw));
 
     margin: clamp(0.5rem, 5vh, 6vh);
