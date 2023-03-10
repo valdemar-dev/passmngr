@@ -1,0 +1,540 @@
+.dashboard {
+    /* create the dashboard,
+       position it at the center of the screen with some margin,
+       define grid structure
+     */
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    z-index: 1000;
+
+    height: calc(100vh - clamp(1rem, 10vh, 12vh));
+    width: calc(100vw - clamp(1rem, 12vw, 20vw));
+
+    margin: clamp(0.5rem, 5vh, 6vh);
+    margin-inline: clamp(0.5rem, 6vw, 10vw);
+
+    box-sizing: content-box;
+
+    overflow: hidden;
+
+    display: grid;
+
+    grid-template-areas:
+        "logo topbar"
+        "sidebar inner_content";
+
+    grid-template-rows: 70px 1fr;
+    grid-template-columns: 200px calc(100% - 200px);
+
+    /* used for blurring the blob that moves around */
+    backdrop-filter: blur(50px);
+
+    border-radius: 20px;
+}
+
+@media screen and (max-width: 600px) {
+    .dashboard {
+        grid-template-columns: 150px calc(100% - 150px);
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .dashboard {
+        margin: 15px;
+        height: calc(100vh - 30px);
+        width: calc(100vw - 30px);
+
+        grid-template-areas:
+            "logo topbar"
+            "sidebar sidebar"
+            "inner_content inner_content";
+
+        grid-template-rows: 70px 50px calc(100% - 120px);
+        grid-template-columns: 80px calc(100% - 80px);
+    }
+}
+
+.dashboard #logo {
+    grid-area: logo;
+    background-color: rgba(20, 20, 20, 0.5);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dashboard #logo h1 {
+    margin: 0px;
+
+    font-size: 1.2rem;
+    font-weight: 700;
+
+    background-image: linear-gradient(to right, var(--primary), var(--secondary));
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+@media screen and (max-width: 500px) {
+    .dashboard #logo h1 {
+        font-size: 0.9rem;
+    }
+}
+
+/* top bar aka search bar */
+
+.dashboard #topbar {
+    grid-area: topbar;
+    background-color: rgba(12, 12, 12, 0.7);
+
+    padding: 1rem;
+    box-sizing: border-box;
+
+    overflow: hidden;
+
+    position: relative;
+    z-index: 2000;
+}
+
+@media screen and (max-width: 500px) {
+    .dashboard #topbar {
+        padding: 0rem;
+        background-color: rgba(20, 20, 20, 0.5);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+input#topbar_search {
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+
+    height: 100%;
+    width: 100%;
+
+    padding: 0.6rem;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    margin: 0px;
+    box-sizing: border-box;
+
+    border: none;
+    border-radius: 5px;
+
+    background-color: rgba(0, 0, 0, 0.5);
+
+    caret-color: var(--white);
+    color: var(--white);
+
+    font-family: var(--font-text);
+    font-size: 1rem;
+
+    transition-duration: 0.2s;
+
+    border: 2px solid transparent;
+}
+
+@media screen and (max-width: 500px) {
+    input#topbar_search {
+        height: 60%;
+        width: 90%;
+    }
+}
+
+input#topbar_search::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    height: 1em;
+    width: 1em;
+    border-radius: 50em;
+    background: url(https://pro.fontawesome.com/releases/v5.10.0/svgs/solid/times-circle.svg) no-repeat 50% 50%;
+    background-size: contain;
+    opacity: 0;
+    pointer-events: none;
+}
+
+input#topbar_search:focus::-webkit-search-cancel-button {
+    opacity: 1;
+    filter: invert(80%);
+    pointer-events: all;
+}
+
+/* side bar */
+
+.dashboard #sidebar {
+    grid-area: sidebar;
+
+    background-color: rgba(20, 20, 20, 0.5);
+
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+
+
+#sidebar .sidebar_link {
+    padding-block: 0.6rem;
+    border-left: 2px solid var(--primary);
+    padding-left: 1rem;
+
+    transition-duration: 200ms;
+
+    transition-timing-function: ease-out;
+
+    background: linear-gradient(to right, var(--primary), transparent);
+
+    background-size: 200% 200%;
+    background-repeat: no-repeat;
+    background-position: 200% 10%;
+
+    cursor: pointer;
+
+    font-size: 1.05rem;
+}
+
+#sidebar .sidebar_link:hover {
+    border-left: 5px solid var(--primary);
+    padding-left: 2rem;
+    background-position: 100% 10%;
+}
+
+@media screen and (max-width: 500px) {
+    .dashboard #sidebar {
+        flex-direction: row;
+    }
+
+    #sidebar .sidebar_link {
+        border-left: 0px solid white;
+        border-top: 0px solid var(--primary);
+        padding-left: 0rem;
+        padding: 0.6rem;
+    }
+
+    #sidebar .sidebar_link:hover {
+        border-left: 0px solid white;
+        border-top: 5px solid var(--primary);
+        padding-left: 0.6rem;
+    }
+}
+
+/* accounts list */
+.dashboard #inner_content {
+    grid-area: inner_content;
+
+    background-color: rgba(0, 0, 0, 0.5);
+
+    overflow: hidden;
+    overflow-y: scroll;
+
+    padding: 1.5rem;
+    box-sizing: border-box;
+
+    position: relative;
+    z-index: 1000;
+}
+
+@media screen and (max-width: 500px) {
+    .dashboard #inner_content {
+        padding: 1rem;
+        padding-top: 1rem;
+    }
+}
+
+.dashboard #inner_content #account_list {
+    display: grid;
+    grid-auto-rows: 170px;
+    grid-template-columns: repeat(5, 1fr);
+
+    gap: 1rem;
+}
+
+@media screen and (max-width: 1700px) {
+    .dashboard #inner_content #account_list {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .dashboard #inner_content #account_list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .dashboard #inner_content #account_list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .dashboard #inner_content #account_list {
+        grid-template-columns: 1fr;
+    }
+}
+
+.account {
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+
+
+    box-sizing: border-box;
+
+    padding: 1rem;
+
+    justify-content: center;
+
+    position: relative;
+
+    /* cssgradient.io */
+    background: linear-gradient(130deg, rgba(0, 0, 0, 0) 33%, rgba(85, 24, 255, 1) 66%, rgba(154, 0, 255, 1) 80%, rgba(255, 0, 181, 1) 100%) rgba(0, 0, 0, 0.5);
+
+    background-position: 0% 0%;
+    background-size: 300% 300%;
+
+    transition-duration: 250ms;
+    transition-timing-function: ease-in-out;
+
+}
+
+@keyframes account_hover_shadow {
+    0% {
+        box-shadow: 0px 0px 62px -2px var(--primary);
+        -webkit-box-shadow: 0px 0px 62px -2px var(--primary);
+        -moz-box-shadow: 0px 0px 62px -2px var(--primary);
+    }
+
+    50% {
+        box-shadow: 0px 0px 62px -2px var(--secondary);
+        -webkit-box-shadow: 0px 0px 62px -2px var(--secondary);
+        -moz-box-shadow: 0px 0px 62px -2px var(--secondary);
+    }
+
+    100% {
+        box-shadow: 0px 0px 62px -2px var(--primary);
+        -webkit-box-shadow: 0px 0px 62px -2px var(--primary);
+        -moz-box-shadow: 0px 0px 62px -2px var(--primary);
+    }
+}
+
+.account:hover {
+    background-position: 100% 100%;
+
+    transform: scale(1.1);
+
+    position: relative;
+    z-index: 1001;
+
+    animation-name: account_hover_shadow;
+    animation-duration: 10s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-delay: 50ms;
+}
+
+@media screen and (max-width: 500px) {
+    .account:hover {
+        transform: scale(1.05);
+    }
+}
+
+.account_header {
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+    font-size: clamp(1rem, 1.2rem, 2rem);
+    font-weight: 600;
+    margin-bottom: auto;
+    font-family: var(--alt-text);
+}
+
+.account_header span {
+    overflow: hidden;
+    max-width: 70%;
+    word-break: break-all;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.account button {
+    border: none;
+    background-color: rgba(255, 255, 255, 0.1);
+
+    display: flex;
+    align-items: center;
+
+    font-size: 1.1rem;
+
+    padding: 0.4rem;
+    padding-inline: 0.6rem;
+
+    border-radius: 8px;
+    color: var(--white);
+
+    transition-duration: 200ms;
+
+    cursor: pointer;
+}
+
+
+.account a {
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+}
+
+#link_image {
+    height: 25px;
+}
+
+.account:hover #account_delete {
+    display: block;
+    filter: invert(90%);
+    opacity: 1;
+
+}
+
+.account:hover #account_delete:hover {
+    opacity: 1;
+    display: block;
+    filter: invert(50%);
+
+}
+
+.account:hover #account_delete:active {
+    display: block;
+    filter: invert(30%);
+    opacity: 1;
+}
+
+#account_delete {
+    margin-left: auto;
+    height: 25px;
+
+    display: none;
+    filter: invert(90%);
+
+    opacity: 0;
+    cursor: pointer;
+
+    transition-duration: 350ms;
+}
+
+.account img {
+    filter: invert(100%);
+
+    transition-duration: 350ms;
+}
+
+.account_copy {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.account_copy button {
+    cursor: copy;
+    position: relative;
+}
+
+.account_copy button:hover img {
+    filter: invert(60%);
+}
+
+.account_copy button:active img {
+    filter: invert(30%);
+}
+
+.account_copy .tooltip_text {
+    position: absolute;
+
+    top: -130%;
+    left: 0px;
+
+    opacity: 0;
+    z-index: 6000;
+
+    white-space: nowrap;
+
+    padding-block: 0.6rem;
+    padding-inline: 0.8rem;
+
+    border-radius: 5px;
+
+    background-color: rgb(42, 42, 42);
+
+    transition-duration: 0.4s;
+    transition-delay: 0s;
+
+    pointer-events: none;
+}
+
+.account_copy button:hover .tooltip_text {
+    opacity: 1;
+    pointer-events: all;
+    transition-delay: 0.6s;
+}
+
+
+/* create account form */
+.dashboard #inner_content #create_account {
+    display: none;
+}
+
+#create_account #account_create_form {
+    display: flex;
+    flex-direction: column;
+}
+
+#account_create_form input {
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+
+    width: min(100%, 500px);
+    padding: 0.6rem;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    margin: 0px;
+    margin-top: 0.3rem;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+
+    border: none;
+    border-radius: 5px;
+
+    background-color: rgba(0, 0, 0, 0.6);
+
+    caret-color: var(--white);
+    color: var(--white);
+
+    font-family: var(--font-text);
+
+    transition-duration: 0.2s;
+
+    border: 2px solid transparent;
+}
+
+#account_create_form button {
+    padding: 0.6rem;
+    padding-inline: 0.8rem;
+
+    background-color: var(--primary);
+    border: none;
+    border-radius: 5px;
+    width: fit-content;
+
+    caret-color: var(--white);
+    color: var(--white);
+
+    transition-duration: 0.2s;
+}
+
+#account_create_form button:hover {
+    filter: brightness(80%);
+}

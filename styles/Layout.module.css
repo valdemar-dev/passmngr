@@ -1,0 +1,118 @@
+@keyframes rotate {
+    from {
+        rotate: 0deg;
+    }
+
+    to {
+        rotate: 360deg;
+    }
+}
+img.blob_top_right {
+    position: fixed;
+
+    --size: 500px;
+
+    height: var(--size);
+
+    top: calc(var(--size) * -1 / 2 + 20px);
+    right: calc(var(--size) * -1 / 2 + 50px);
+
+    animation-name: rotate;
+    animation-duration: 120s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+img.blob_bottom_left {
+    position: fixed;
+
+    --size: 500px;
+
+    height: var(--size);
+
+    bottom: calc(var(--size) * -1 / 2 + 50px);
+    left: calc(var(--size) * -1 / 2 + 50px);
+
+    animation-name: rotate;
+    animation-duration: 120s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+img.blob_bottom_right {
+    position: fixed;
+
+    --size: 500px;
+
+    height: var(--size);
+
+    bottom: calc(var(--size) * -1 / 2 + 50px);
+    right: calc(var(--size) * -1 / 2 + 600px);
+
+    animation-name: rotate;
+    animation-duration: 120s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+
+img.blob:nth-child(2) {
+    transform:scale(1.5);
+    animation-duration: 50s;
+}
+
+img.blob:nth-child(3) {
+    transform:scale(1.2);
+    animation-duration: 70s;
+}
+
+img.blob:nth-child(4) {
+    transform:scale(1.2);
+    animation-duration: 110s;
+}
+
+img.blob:nth-child(5) {
+    transform: scale(0.8);
+    animation-duration: 150s;
+}
+
+img.blob:nth-child(6) {
+    transform:scale(1.6);
+    animation-duration: 50s;
+}
+
+img.blob:nth-child(7) {
+    transform:scale(1.2);
+    animation-duration: 70s;
+}
+
+img.blob:nth-child(8) {
+    transform:scale(1.2);
+    animation-duration: 110s;
+}
+
+img.blob:nth-child(9) {
+    animation-duration: 150s;
+}
+
+img.blob:nth-child(10) {
+    transform:scale(1.4);
+    animation-duration: 50s;
+}
+
+img.blob:nth-child(11) {
+    transform:scale(1.2);
+    animation-duration: 70s;
+}
+
+img.blob:nth-child(12) {
+    transform:scale(1.2);
+    animation-duration: 110s;
+}
+
+img.blob:nth-child(13) {
+    animation-duration: 150s;
+}

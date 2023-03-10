@@ -1,0 +1,25 @@
+{
+  "name": "passwordmanager",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@next/font": "13.1.6",
+    "@prisma/client": "^4.10.1",
+    "next": "13.1.6",
+    "react": "18.2.0",
+    "react-beforeunload": "^2.5.3",
+    "react-dom": "18.2.0",
+    "sequelize": "^6.28.0",
+    "sqlite3": "^5.1.4",
+    "universal-cookie": "^4.0.4"
+  },
+  "devDependencies": {
+    "prisma": "^4.10.1"
+  }
+}

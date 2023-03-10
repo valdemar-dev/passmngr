@@ -1,0 +1,161 @@
+.login {
+    height: 100vh;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes register_form_animation {
+    0% {
+        opacity: 0%;
+        top: 20px;
+    }
+    100% {
+        opacity: 100%;
+        top: 0px;
+    }
+}
+
+#login_content_wrapper {
+    background-color: rgba(0,0,0,0.50);
+
+    border-radius: 20px;
+    padding: 1.5rem;
+    z-index: 2;
+    grid-column: 1;
+    grid-row: 1;
+}
+
+@keyframes form_blob_breathe {
+    0% {
+        bottom: -90px; 
+    }
+    50% {
+        bottom: -50px; 
+    }
+    100% {
+        bottom: -90px; 
+    }
+}
+
+#form_blob {
+    filter:blur(90px);
+    position: relative;
+    grid-column: 1;
+    grid-row: 1;
+
+    height: 200px;
+
+    left: 300px; 
+    bottom: 90px; 
+
+    transform: scale(1.1);
+    animation-iteration-count: infinite;
+    animation-name: form_blob_breathe;
+    animation-duration: 10s;
+}
+
+#login_form {
+    backdrop-filter: blur(20px);
+
+    border-radius: 20px;
+
+    z-index: 100;
+    position: relative;
+    max-width: 80%; 
+    width: 400px;
+    
+    animation-name: register_form_animation;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+    
+    overflow: hidden;
+
+    display: grid;
+}
+
+#login_form p {
+    margin-bottom: 0px;
+}
+
+#login_form h2 {
+    margin-top: 0px;
+}
+
+#login_form form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#login_form button {
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+
+    align-self: start;
+
+    padding: 0.6rem;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    margin: 0px;
+    box-sizing: border-box;
+
+    border: none;
+    border-radius: 5px;
+    
+    background-color: var(--primary);
+
+    caret-color: var(--white);
+    color: var(--white);
+
+    transition-duration: 0.2s;
+}
+
+#login_form button:hover {
+    filter: brightness(80%);
+}
+
+#login_form input {
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+
+    width: 100%;
+    padding: 0.6rem;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    margin: 0px;
+    box-sizing: border-box;
+
+    border: none;
+    border-radius: 5px;
+    
+    background-color: rgba(0,0,0,0.25);
+
+    caret-color: var(--white);
+    color: var(--white);
+
+    font-family: var(--font-text);
+
+    transition-duration: 0.2s;
+
+    border: 2px solid transparent;
+}
+
+#login_form input:focus {
+    background-color: rgba(0,0,0,0.50);
+}
+
+#login_form_header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+#login_info_text {
+    color: #ff3021;
+}

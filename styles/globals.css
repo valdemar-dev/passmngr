@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&family=Open+Sans:wght@300;400&family=Rubik+Mono+One&family=Ubuntu+Mono:wght@400;700&display=swap');
+
+:root {
+    --black: #07070A;
+    --white: #F2F4F8;
+    --primary: #7414E1;
+    --secondary: #FF33BE;
+    --tirtiary: #0CCA4A;
+
+    --font-text: 'Open Sans', sans-serif;
+    --alt-text: 'Inter', sans-serif;
+    --fancy-text: 'Rubik Mono One', sans-serif;
+    --mono-text: "Ubuntu Mono", monospace;
+}
+
+html,body {
+   padding: 0;
+   margin: 0;
+   
+   min-height: 100vh;
+
+   background-color: var(--black);
+   color: var(--white);
+
+   box-sizing: border-box;
+   font-family: var(--font-text);
+}
+
+a {
+    font-family: var(--alt-text);
+    text-decoration: none;
+
+    font-weight: 500;
+    color: var(--primary);
+
+    transition-duration: 0.2s;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: var(--alt-text);
+}
+
+
+
+button.logout {
+    padding: 0.7rem;
+
+    border-radius: 100%;
+    border: none;
+
+    color: var(--black);
+
+    font-weight: 400;
+
+    font-size: 1.1rem;
+
+    background-color: rgba(0,0,0,0);
+
+    border: none;
+
+    font-family: var(--alt-text);
+
+    transition-duration: 0.2s;
+
+    filter: invert(100%);
+}
+
+button.logout:hover {
+    filter: invert(60%);
+}
+
+button.logout:active {
+    filter: invert(30%);
+}
+
+img {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background-color: rgba(12,12,12,0.5);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background-color: rgba(255,255,255,0.1); 
+  border-radius: 10px;
+}
+
+:focus {
+    border: 1px solid white;
+}
