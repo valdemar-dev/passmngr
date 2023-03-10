@@ -122,7 +122,7 @@ export default function Dashboard() {
         // add error handling here
         await fetch(endpoint, options);
 
-        Router.reload();
+        Router.reload(); 
     };
 
     const deleteAccount = async (id) => {
@@ -180,6 +180,10 @@ export default function Dashboard() {
     };
 
     const loadAccounts = () => {
+        if (accounts.length < 1) {
+            return null;
+        }
+
         return accounts.map(account => {
             const email = decrypt(account.email, account.iv);
             const username = decrypt(account.username, account.iv);
@@ -270,7 +274,7 @@ export default function Dashboard() {
  
                 <div id={styles.inner_content}>
                     <div id={styles.account_list} ref={pageRefs.accountListRef}>
-                        {loadAccounts()}
+                        {loadAccounts() || "No accounts found!"}
                     </div>
 
                     <div id={styles.create_account} ref={pageRefs.createAccountRef}>
