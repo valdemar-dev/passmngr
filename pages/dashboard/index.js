@@ -255,7 +255,7 @@ export default function Dashboard() {
             createPasswordFieldRef.current.disabled = true;
 
             crypto.randomBytes(32, function(err, buffer) {
-              createPasswordFieldRef.current.value = buffer.toString('hex');
+              createPasswordFieldRef.current.value = buffer.toString('base64');
             });    
         } else {
             createPasswordFieldRef.current.disabled = false;
