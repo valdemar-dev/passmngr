@@ -2,7 +2,7 @@ import styles from "@/styles/Dashboard.module.css";
 import { useEffect, useRef, useState } from "react";
 
 import Cookies from "universal-cookie";
-import crypto from "crypto";
+import crypto, { randomInt } from "crypto";
 import Router from "next/router";
 
 export default function Dashboard() {
@@ -10,6 +10,13 @@ export default function Dashboard() {
         accountListRef: useRef(),
         createAccountRef: useRef(),
     };
+
+    const sidebarRefs = {
+        accountListRef: useRef(),
+        createAccountRef: useRef(),
+    };
+
+    const createPasswordFieldRef = useRef();
 
     // fetch all the accounts and decrypt them using the stored vault key cookie
     const [data, setData] = useState(null);
@@ -235,9 +242,24 @@ export default function Dashboard() {
         for (const pageRef in pageRefs) {
             if (ref === pageRef) {
                 pageRefs[pageRef].current.style.display = "grid";
+                sidebarRefs[pageRef].current.className = `${styles.sidebar_link} ${styles.sidebar_link_active}`;
             } else {
                 pageRefs[pageRef].current.style.display = "none";
+                sidebarRefs[pageRef].current.className = `${styles.sidebar_link}`;
             }
+        }
+    };
+
+    const handlePasswordAutoGenerate = (event) => {
+        if (event.target.checked) {
+            createPasswordFieldRef.current.disabled = true;
+
+            crypto.randomBytes(32, function(err, buffer) {
+              createPasswordFieldRef.current.value = buffer.toString('hex');
+            });    
+        } else {
+            createPasswordFieldRef.current.disabled = false;
+            createPasswordFieldRef.current.value = "";
         }
     };
 
@@ -253,20 +275,22 @@ export default function Dashboard() {
                         type="search" 
                         placeholder="Search accounts.."
                         onChange={(query) => {setSearchQuery(query.target.value)}}
-                        autoFocus="true"
+                        autoFocus={true}
                     />
                 </div>
 
                 <div id={styles.sidebar}>
                     <div 
-                        className={styles.sidebar_link} 
-                        onClick={() => {showSubPage("accountListRef")}}
+                        className={`${styles.sidebar_link} ${styles.sidebar_link_active}`}
+                        onClick={() => {showSubPage("accountListRef");}}
+                        ref={sidebarRefs.accountListRef}
                     >
                         Accounts
                     </div>
                     <div 
                         className={styles.sidebar_link} 
                         onClick={() => {showSubPage("createAccountRef")}}
+                        ref={sidebarRefs.createAccountRef}
                     >
                         Create
                     </div>
@@ -291,7 +315,21 @@ export default function Dashboard() {
                             <span>Email (optional)</span>
                             <input type="email"/>
                             <span>Password</span>
-                            <input type="password"/>
+                            <input 
+                                type="password"
+                                ref={createPasswordFieldRef}
+                            />
+
+                            <div id={styles.create_account_password_autogenerate}>
+                                <label htmlFor="checkbox_password">Auto-generate password</label>
+                                <input 
+                                    type="checkbox" 
+                                    id="checkbox_password" 
+                                    name="checkbox" 
+                                    value="value"
+                                    onChange={(event) => {handlePasswordAutoGenerate(event)}}
+                                />
+                            </div>
 
                             <button type="submit">Create account</button>
                         </form> 
