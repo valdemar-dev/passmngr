@@ -210,6 +210,7 @@ input#topbar_search:focus::-webkit-search-cancel-button {
 .sidebar_link_active {
     border-left: 5px solid var(--primary) !important;
     padding-left: 2rem !important;
+    background-position: 100% 10% !important;
 }
 
 @media screen and (max-width: 500px) {
@@ -509,7 +510,7 @@ input#topbar_search:focus::-webkit-search-cancel-button {
 
     .account_copy .tooltip_text {
         transition-duration: 0s;
-        transition-delay: 2s;
+        transition-delay: 1.5s;
     }
 
     .account_copy button:hover img {
@@ -550,7 +551,7 @@ input#topbar_search:focus::-webkit-search-cancel-button {
     border: none;
     border-radius: 5px;
 
-    background-color: rgba(20, 20, 20, 0.6);
+    background-color: rgba(30, 30, 30, 0.3);
 
     caret-color: var(--white);
     color: var(--white);

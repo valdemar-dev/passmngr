@@ -198,7 +198,10 @@ export default function Dashboard() {
             const service = decrypt(account.service, account.iv);
             const password = decrypt(account.password, account.iv);
 
-            if (!service.toLowerCase().includes(searchQuery.toLowerCase())) return;
+            if (searchQuery.length > 0){
+                const regex = new RegExp(`(${searchQuery})+`, "gi");
+                if (!regex.test(service)) return;
+            }
 
             let accountLink;
             
