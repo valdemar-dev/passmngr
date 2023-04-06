@@ -92,9 +92,9 @@ export default function Register() {
           </div>
 
           <form onSubmit={event => {createAccount(event)}} autoComplete={"off"}>
-            <input type="email" placeholder='email' ref={emailRef} autoComplete="off"/>
+            <input type="email" placeholder='email' ref={emailRef} autoComplete="off" required/>
             <br/>
-            <input type="password" placeholder='password' ref={passwordRef} autoComplete="off"/>
+            <input type="password" placeholder='password' ref={passwordRef} autoComplete="off" required/>
             <span ref={passwordValidatorRef}></span>
             <br/>
             <button type="submit">Register</button>

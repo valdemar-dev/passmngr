@@ -289,7 +289,6 @@ export default function Dashboard() {
                         type="search" 
                         placeholder="Search accounts.."
                         onChange={(query) => {setSearchQuery(query.target.value)}}
-                        autoFocus={true}
                     />
                 </div>
 

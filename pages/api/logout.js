@@ -1,4 +1,4 @@
-import prisma from "@/utils/prismaClient";
+import { prisma } from "@/utils/prismaClient";
 import crypto from "crypto";
 import Cookies from "universal-cookie";
 

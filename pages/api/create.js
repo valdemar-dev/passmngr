@@ -1,6 +1,6 @@
 import Cookies from "universal-cookie";
 
-import prisma from "@/utils/prismaClient";
+import { prisma } from "@/utils/prismaClient";
 
 export default async function handler(req, res) { 
     if (req.method === "POST") {

@@ -93,9 +93,9 @@ export default function Login() {
           </div>
 
           <form onSubmit={event => {checkPassword(event)}}>
-            <input type="email" placeholder='email' ref={emailRef}/>
+            <input type="email" placeholder='email' ref={emailRef} required/>
             <br/>
-            <input type="password" placeholder='password' ref={passwordRef}/>
+            <input type="password" placeholder='password' ref={passwordRef} required/>
             <br/>
             <button type="submit">Login</button>
           </form>
