@@ -91,13 +91,10 @@ export default function Register() {
             <span id={styles.register_info_text} ref={infoTextRef}></span>
           </div>
 
-          <form onSubmit={event => {createAccount(event)}} autoComplete={"off"}>
-            <input type="email" placeholder='email' ref={emailRef} autoComplete="off" required/>
-            <br/>
-            <input type="password" placeholder='password' ref={passwordRef} autoComplete="off" required/>
-            <span ref={passwordValidatorRef}></span>
-            <br/>
-            <button type="submit">Register</button>
+          <form onSubmit={event => {checkPassword(event)}}>
+            <input type="email" placeholder='email' ref={emailRef} required/>
+            <input type="password" placeholder='password' ref={passwordRef} required/>
+            <button type="submit">Login</button>
           </form>
 
           <p>
@@ -105,8 +102,6 @@ export default function Register() {
             <Link href="/login" style={{float: "right",}}> Login</Link>
           </p>
         </div>
-
-        <img src={"/blob1.svg"} id={styles.form_blob}/>
       </div>
     </div>
   );

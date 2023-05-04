@@ -86,30 +86,36 @@
 }
 
 #login_form form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+
+    grid-template-areas: 
+    "email email"
+    "password button";
+
+    grid-template-columns: calc(80% - 0.5rem) 20%;
+    grid-template-rows: 3rem 3rem;
+
+    gap: 1rem;
 }
 
 #login_form button {
+    grid-area: button;
+
     -webkit-appearance: none;
     appearance: none;
     outline: none;
 
-    align-self: start;
+    align-self: center;
+    justify-self: center;
 
-    padding: 0.6rem;
-    padding-top: 0.6rem;
-    padding-bottom: 0.6rem;
-    margin: 0px;
-    box-sizing: border-box;
+    height: 80%;
+    width: 80%;
 
     border: none;
     border-radius: 5px;
     
     background-color: var(--primary);
 
-    caret-color: var(--white);
     color: var(--white);
 
     transition-duration: 0.2s;
@@ -119,16 +125,16 @@
     filter: brightness(80%);
 }
 
+#login_form button:focus {
+    filter: brightness(80%);
+}
+
 #login_form input {
     -webkit-appearance: none;
     appearance: none;
     outline: none;
 
-    width: 100%;
-    padding: 0.6rem;
-    padding-top: 0.6rem;
-    padding-bottom: 0.6rem;
-    margin: 0px;
+    padding-left: 0.5rem;
     box-sizing: border-box;
 
     border: none;
@@ -144,6 +150,14 @@
     transition-duration: 0.2s;
 
     border: 2px solid transparent;
+}
+
+#login_form form input:nth-child(1) {
+    grid-area: email;
+}
+
+#login_form form input:nth-child(2) {
+    grid-area: password;
 }
 
 #login_form input:focus {

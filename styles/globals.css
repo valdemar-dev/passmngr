@@ -40,8 +40,6 @@ h1,h2,h3,h4,h5,h6 {
     font-family: var(--alt-text);
 }
 
-
-
 button.logout {
     padding: 0.7rem;
 
@@ -93,8 +91,4 @@ img {
 ::-webkit-scrollbar-thumb {
     background-color: rgba(255,255,255,0.1); 
   border-radius: 10px;
-}
-
-:focus {
-    border: 1px solid white;
 }

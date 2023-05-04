@@ -1,0 +1,112 @@
+.home {
+    /* create the dashboard,
+       position it at the center of the screen with some margin,
+       define grid structure
+     */
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    z-index: 1000;
+
+    height: calc(100vh - clamp(1rem, 10vh, 12vh));
+    width: calc(100vw - clamp(1rem, 12vw, 20vw));
+
+    margin: clamp(0.5rem, 5vh, 6vh);
+    margin-inline: clamp(0.5rem, 6vw, 10vw);
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+
+    overflow-y: scroll;
+
+    /* used for blurring the blob that moves around */
+    backdrop-filter: blur(50px);
+
+    border-radius: 20px;
+
+    background-color: rgba(0,0,0,0.5);
+
+    padding: 1rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+@keyframes fade_in {
+    0% {
+        transform: translateY(50%);
+        opacity: 0%;
+    }
+
+    100% {
+        transform: translateX(0%);
+        opacity: 100%;
+    }
+}
+
+
+.fade_in {
+    animation-name: fade_in;
+    animation-duration: 2s;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    animation-fill-mode: forwards;
+}
+
+.home section {
+    height: 30vh;
+
+    max-width: 700px;
+
+    padding-bottom: 4rem;
+
+    text-align: center;
+}
+
+section#first_section h1 {
+    background-image: linear-gradient(to right, var(--primary), var(--secondary));
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    font-size: 2.6rem;
+}
+
+section#first_section a {
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+
+    padding: 0.6rem;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+
+    border: none;
+    border-radius: 5px;
+    
+    background-color: var(--primary);
+
+    caret-color: var(--white);
+    color: var(--white);
+
+    transition-duration: 0.2s;
+
+    font-size: 1rem;
+
+    cursor:pointer;
+}
+
+section#first_section a:hover {
+    filter: brightness(80%);
+}
+
+section#first_section a:focus {
+    filter: brightness(80%);
+}
+
+section#first_section p {
+    color: var(--white);
+    font-size: 1rem;
+}

@@ -34,7 +34,7 @@
     border-radius: 20px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
     .dashboard {
         grid-template-columns: 150px calc(100% - 150px);
     }
@@ -102,6 +102,18 @@
     z-index: 2000;
 }
 
+#topbar_title {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    align-items: center;    
+
+    margin: 0px;
+
+    margin-left: 10px;
+}
+
 @media screen and (max-width: 500px) {
     .dashboard #topbar {
         padding: 0rem;
@@ -113,7 +125,7 @@
     }
 }
 
-input#topbar_search {
+#topbar_search {
     -webkit-appearance: none;
     appearance: none;
     outline: none;
@@ -179,7 +191,6 @@ input#topbar_search:focus::-webkit-search-cancel-button {
     gap: 0px;
 }
 
-
 #sidebar .sidebar_link {
     padding-block: 0.6rem;
     border-left: 2px solid var(--primary);
@@ -195,6 +206,8 @@ input#topbar_search:focus::-webkit-search-cancel-button {
     background-repeat: no-repeat;
     background-position: 200% 10%;
 
+    color: var(--white);
+    
     cursor: pointer;
 
     font-size: 1.05rem;
@@ -353,7 +366,6 @@ input#topbar_search:focus::-webkit-search-cancel-button {
     animation-duration: 10s;
     animation-fill-mode: forwards;
     animation-iteration-count: infinite;
-    animation-delay: 50ms;
 }
 
 @media screen and (max-width: 500px) {

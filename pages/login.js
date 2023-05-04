@@ -8,12 +8,18 @@ const cookies = new Cookies();
 
 import crypto from "crypto";
 import Link from "next/link";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 export default function Login() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const infoTextRef = useRef();
+
+  useEffect(() => {
+    fetch("/api/checklogin").then((res) => {
+      if (res.ok) return Router.push("/dashboard");
+    })
+  }, []);
 
   const highlightInput = ({ current }, text) => {
       const infoText = infoTextRef.current;
@@ -40,10 +46,6 @@ export default function Login() {
   
     const email = event.target[0].value;
     const password = event.target[1].value;
-
-    if (!email) return highlightInput(emailRef, "Enter a valid email address!");
-
-    if (!password) return highlightInput(passwordRef, "Enter a valid password!");
 
     const hashedEmail = hash(email);
     const hashedPassword = hash(password);
@@ -94,9 +96,7 @@ export default function Login() {
 
           <form onSubmit={event => {checkPassword(event)}}>
             <input type="email" placeholder='email' ref={emailRef} required/>
-            <br/>
             <input type="password" placeholder='password' ref={passwordRef} required/>
-            <br/>
             <button type="submit">Login</button>
           </form>
 
@@ -105,10 +105,6 @@ export default function Login() {
             <Link href="/register" style={{float: "right",}}> Register</Link>
           </p>
         </div>
-
-
-
-        <img src={"/blob1.svg"} id={styles.form_blob}/>
       </div>
     </div>
   )

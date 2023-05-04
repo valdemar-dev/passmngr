@@ -58,14 +58,15 @@
 }
 
 #register_form {
+    backdrop-filter: blur(20px);
 
     border-radius: 20px;
 
     z-index: 100;
     position: relative;
-
-    width: min(95%, 400px);
     
+    width: min(95%, 400px);
+
     animation-name: register_form_animation;
     animation-duration: 0.4s;
     animation-fill-mode: forwards;
@@ -85,30 +86,36 @@
 }
 
 #register_form form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+
+    grid-template-areas: 
+    "email email"
+    "password button";
+
+    grid-template-columns: calc(80% - 0.5rem) 20%;
+    grid-template-rows: 3rem 3rem;
+
+    gap: 1rem;
 }
 
 #register_form button {
+    grid-area: button;
+
     -webkit-appearance: none;
     appearance: none;
     outline: none;
 
-    align-self: start;
+    align-self: center;
+    justify-self: center;
 
-    padding: 0.6rem;
-    padding-top: 0.6rem;
-    padding-bottom: 0.6rem;
-    margin: 0px;
-    box-sizing: border-box;
+    height: 80%;
+    width: 80%;
 
     border: none;
     border-radius: 5px;
     
     background-color: var(--primary);
 
-    caret-color: var(--white);
     color: var(--white);
 
     transition-duration: 0.2s;
@@ -118,16 +125,16 @@
     filter: brightness(80%);
 }
 
+#register_form button:focus {
+    filter: brightness(80%);
+}
+
 #register_form input {
     -webkit-appearance: none;
     appearance: none;
     outline: none;
 
-    width: 100%;
-    padding: 0.6rem;
-    padding-top: 0.6rem;
-    padding-bottom: 0.6rem;
-    margin: 0px;
+    padding-left: 0.5rem;
     box-sizing: border-box;
 
     border: none;
@@ -145,6 +152,14 @@
     border: 2px solid transparent;
 }
 
+#register_form form input:nth-child(1) {
+    grid-area: email;
+}
+
+#register_form form input:nth-child(2) {
+    grid-area: password;
+}
+
 #register_form input:focus {
     background-color: rgba(0,0,0,0.50);
 }
@@ -157,5 +172,5 @@
 
 #register_info_text {
     color: #ff3021;
-    font-size: clamp(0.8, 4vw, 1rem);
+    font-size: clamp(0.6rem, 4vw, 1rem);
 }
