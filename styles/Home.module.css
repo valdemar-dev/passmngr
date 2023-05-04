@@ -17,9 +17,7 @@
 
     box-sizing: border-box;
 
-    overflow: hidden;
-
-    overflow-y: scroll;
+    overflow-x: hidden;
 
     /* used for blurring the blob that moves around */
     backdrop-filter: blur(50px);
