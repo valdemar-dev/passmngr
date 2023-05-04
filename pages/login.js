@@ -16,8 +16,11 @@ export default function Login() {
   const infoTextRef = useRef();
 
   useEffect(() => {
-    fetch("/api/checklogin").then((res) => {
-      if (res.ok) return Router.push("/dashboard");
+    fetch("/api/checklogin").then(async (res) => {
+      if (!res.ok) return;
+
+      const resJSON = await res.json();
+      if (resJSON.isLoggedIn === true) return Router.push("/dashboard");
     })
   }, []);
 

@@ -15,7 +15,7 @@ export default function Home() {
         <br/>
         <div style={{display: "flex", gap:"1rem", justifyContent: "center"}}>
           <Link className={styles.fade_in} href="/register">Register now</Link>
-          <Link className={styles.fade_in} href="/about">Read more</Link>
+          <Link className={styles.fade_in} href="/about" disabled>Read more</Link>
         </div>
       </section>
     </div>
