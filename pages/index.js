@@ -4,6 +4,13 @@ import Router from 'next/router'
 import { useEffect, useState } from 'react'
 
 export default function Home() {
+  useEffect(() => {
+    fetch("/api/checklogin").then(async (res) => {
+      const resJSON = await res.json();
+
+      if (resJSON.isLoggedIn === true) return Router.push("/dashboard");
+    })
+  }, []);
 
   return (
     <div className={styles.home}>
@@ -14,8 +21,7 @@ export default function Home() {
         <br/>
         <br/>
         <div style={{display: "flex", gap:"1rem", justifyContent: "center"}}>
-          <Link className={styles.fade_in} href="/register">Register now</Link>
-          <Link className={styles.fade_in} href="/about" disabled>Read more</Link>
+          <Link className={styles.fade_in} href="/register">Register</Link>
         </div>
       </section>
     </div>
