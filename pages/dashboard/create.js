@@ -82,7 +82,6 @@ export default function Dashboard() {
                 </div>
 
                 <div id={styles.topbar}>
-                    <h3 id={styles.topbar_title}>Add account</h3>
                 </div>
 
                 <div id={styles.sidebar}>
