@@ -75,11 +75,11 @@ export default function Login() {
     const result = await response.json();
     
     if (result.isPasswordCorrect === true) {
+      // use next headers instead of universal-cookie?
       cookies.set("sessionToken", result.sessionToken, { path: "/", maxAge: 43200 });
         
       const vaultKey = hash(`${email}${password}`);
       localStorage.setItem("vaultKey", vaultKey.slice(0, vaultKey.length / 2));
-      localStorage.setItem("email", email); 
 
       Router.push("/dashboard");
     } else {
